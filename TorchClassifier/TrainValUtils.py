@@ -2,7 +2,7 @@ from enum import Enum
 import torch
 import torch.distributed as dist
 import matplotlib.pyplot as plt
-from TorchClassifier.Datasetutil.Visutil import imshow
+from Datasetutil.Visutil import imshow
 import numpy as np
 import time
 from tqdm import tqdm
@@ -314,9 +314,9 @@ def postfilter(indices, probs, classnames=None, min_threshold=0.1):
         batchresults.append(topkresult)
     return batchresults
 
-from TorchClassifier.Datasetutil.Imagenetdata import loadjsontodict, dict2array, preprocess_image, preprocess_imagecv2
-from TorchClassifier.Datasetutil.Visutil import visfirstimageinbatch, plot_most_incorrect
-from TorchClassifier.myTorchModels.TorchCNNmodels import createTorchCNNmodel, createImageNetmodel
+from Datasetutil.Imagenetdata import loadjsontodict, dict2array, preprocess_image, preprocess_imagecv2
+from Datasetutil.Visutil import visfirstimageinbatch, plot_most_incorrect
+from myTorchModels.TorchCNNmodels import createTorchCNNmodel, createImageNetmodel
 import os
 def create_model(model_name, model_type, classmap, checkpoint=None, torchhub=None, device="cuda", img_shape=[2, 224, 224]):
     #Load class map
@@ -343,7 +343,7 @@ def create_model(model_name, model_type, classmap, checkpoint=None, torchhub=Non
                 elif 'model' in checkpoint:
                     state_dict_key = 'model'
             model_state=checkpoint[state_dict_key]
-            size=model_state['fc.bias'].shape
+            size = model_state['model.9.bias'].shape
             print(f"Output size in model: {size[0]}, numclasses: {numclasses}")
             model_ft.load_state_dict(model_state)
             print(f"Loading checkpoint: {checkpoint}")

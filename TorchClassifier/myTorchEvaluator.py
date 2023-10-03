@@ -22,18 +22,17 @@ import PIL.Image
 
 print(torch.__version__)
 
-from TorchClassifier.Datasetutil.Visutil import visfirstimageinbatch, vistestresult, matplotlib_imshow, plot_most_incorrect, plot_confusion_matrix
-from TorchClassifier.Datasetutil.Torchdatasetutil import loadTorchdataset
-from TorchClassifier.Datasetutil.Imagenetdata import loadjsontodict, dict2array, preprocess_image, preprocess_imagecv2
-from TorchClassifier.myTorchModels.TorchCNNmodels import createTorchCNNmodel, createImageNetmodel
-from TorchClassifier.TrainValUtils import create_model, test_model, postfilter, \
-    model_inference, inference_singleimage, inference_batchimage, collect_incorrect_examples, getclass_newnames
+from Datasetutil.Visutil import visfirstimageinbatch, vistestresult, matplotlib_imshow, plot_most_incorrect, plot_confusion_matrix
+from Datasetutil.Torchdatasetutil import loadTorchdataset
+from Datasetutil.Imagenetdata import loadjsontodict, dict2array, preprocess_image, preprocess_imagecv2
+from myTorchModels.TorchCNNmodels import createTorchCNNmodel, createImageNetmodel
+from TrainValUtils import create_model, test_model, postfilter,model_inference, inference_singleimage, inference_batchimage, collect_incorrect_examples, getclass_newnames
 
 model = None 
 device = None
 # import logger
 
-os.environ['TORCH_HOME'] = '/data/cmpe249-fa23/torchhome/' #setting the environment variable
+os.environ['TORCH_HOME'] = '/home/016032497/CMPE258' #setting the environment variable
 
 #Tiny Imagenet evaluation
 #python myTorchEvaluator.py --data_name 'tiny-imagenet-200' --data_type 'trainonly' 

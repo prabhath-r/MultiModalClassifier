@@ -5,7 +5,7 @@ import torchvision
 import numpy as np
 from torch.utils.data.sampler import SubsetRandomSampler
 
-from TorchClassifier.Datasetutil.Visutil import imshow, visbatchimage, visimagelistingrid
+from Datasetutil.Visutil import imshow, visbatchimage, visimagelistingrid
 BATCH_SIZE = 32
 IMG_height = 180
 IMG_width = 180

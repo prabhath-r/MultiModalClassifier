@@ -7,14 +7,14 @@ import torchvision
 from torchvision import datasets, models, transforms
 import torch.nn.functional as F
 
-from TorchClassifier.myTorchModels.CustomResNet import setupCustomResNet
+from myTorchModels.CustomResNet import setupCustomResNet
+from myTorchModels.CustomMobileNet import setupCustomMobileNet
 
 # Try to get torchinfo, install it if it doesn't work
-try:
-    from torchinfo import summary
-except:
-    print("[INFO] Couldn't find torchinfo... installing it.")
-    # !pip install -q torchinfo
+from torchinfo import summary
+# except:
+#     print("[INFO] Couldn't find torchinfo... installing it.")
+#     # !pip install -q torchinfo
     # from torchinfo import summary
 
 #old approach
@@ -87,6 +87,8 @@ def createTorchCNNmodel(name, numclasses, img_shape, pretrained=True):
         return create_resnetmodel1(numclasses, img_shape)
     elif name=='customresnet':
         return setupCustomResNet(numclasses, 'resnet50')
+    elif name == 'custommobilenet':
+        return setupCustomMobileNet(numclasses)
     elif name in model_names:
         #return models.__dict__[name](pretrained=pretrained)
         #return create_torchvisionmodel(name, numclasses, pretrained)

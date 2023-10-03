@@ -21,17 +21,16 @@ import random
 import warnings
 import shutil
 
+print(torch.cuda.is_available())
+
+
 import PIL
 import PIL.Image
 
-try:
-    from torchinfo import summary
-except:
-    print("[INFO] Couldn't find torchinfo... installing it.")
-    # !pip install -q torchinfo
-    # from torchinfo import summary
 
-os.environ['TORCH_HOME'] = '/data/cmpe249-fa23/torchhome/' #setting the environment variable
+from torchinfo import summary
+
+os.environ['TORCH_HOME'] = '/home/016032497/CMPE258' #setting the environment variable
 
 CHECKPOINT_PATH="./outputs"
 CHECKPOINT_file=os.path.join(CHECKPOINT_PATH, 'checkpoint.pth.tar')
@@ -42,12 +41,12 @@ from torch.utils.tensorboard import SummaryWriter
 
 print(torch.__version__)
 
-from TorchClassifier.Datasetutil.Visutil import imshow, vistestresult, matplotlib_imshow
-from TorchClassifier.Datasetutil.Torchdatasetutil import loadTorchdataset
-from TorchClassifier.myTorchModels.TorchCNNmodels import createTorchCNNmodel
-from TorchClassifier.myTorchModels.TorchOptim import gettorchoptim
-from TorchClassifier.myTorchModels.TorchLearningratescheduler import setupLearningratescheduler
-from TorchClassifier.TrainValUtils import ProgressMeter, AverageMeter, accuracy
+from Datasetutil.Visutil import imshow, vistestresult, matplotlib_imshow
+from Datasetutil.Torchdatasetutil import loadTorchdataset
+from myTorchModels.TorchCNNmodels import createTorchCNNmodel
+from myTorchModels.TorchOptim import gettorchoptim
+from myTorchModels.TorchLearningratescheduler import setupLearningratescheduler
+from TrainValUtils import ProgressMeter, AverageMeter, accuracy
 # from TFClassifier.Datasetutil.TFdatasetutil import loadTFdataset #loadtfds, loadkerasdataset, loadimagefolderdataset
 # from TFClassifier.myTFmodels.CNNsimplemodels import createCNNsimplemodel
 # from TFClassifier.Datasetutil.Visutil import plot25images, plot9imagesfromtfdataset, plot_history
